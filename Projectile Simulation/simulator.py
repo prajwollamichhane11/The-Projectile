@@ -10,27 +10,10 @@ ox = -0.8
 oy = -0.8
 vx = 0.8
 vy = 0.8
-clock = 0.001
+clock = 0.00001
 g = 9.8
 arr_x = []
 arr_y = []
-t = 0
-
-u = int(input("Enter the initial velocity: "))
-theta = float(input("Enter the initial angle at which the projectile is thrown from the ground: "))
-theta = radians(theta)
-#Time of Flight
-T = 2*u*sin(theta)//g
-
-while t<= T:
-    x = u * cos(theta) * t
-    y = u * sin(theta) * t - 0.5*g*t**2
-    print(x)
-    print(y)
-    arr_x.append(x+ox)
-    arr_y.append(y+oy)
-
-    t += clock
 
 def draw_axes():
     glVertex2f(ox,oy)
@@ -39,8 +22,23 @@ def draw_axes():
     glVertex2f(ox,vy)
 
 def draw_trajectory():
-    for i in range(len(arr_x)):
-        glVertex2f(arr_x[i],arr_y[i])
+    t = 0
+    u = int(input("Enter the initial velocity: "))
+    theta = float(input("Enter the initial angle at which the projectile is thrown from the ground: "))
+    theta = radians(theta)
+    #Time of Flight
+    T = 2*u*sin(theta)//g
+
+    while t <= T:
+        x = u * cos(theta) * t
+        y = u * sin(theta) * t - 0.5 * (g) * (t**2)
+        print(x/100)
+        print(y/100)
+        glVertex2f(ox+(x/100),oy+(y/100))
+        arr_x.append(x+ox)
+        arr_y.append(y+oy)
+
+        t += clock
 
 
 def draw():
