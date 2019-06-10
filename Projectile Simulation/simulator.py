@@ -1,22 +1,39 @@
 from OpenGL.GL import *
 from OpenGL.GLUT import *
 from OpenGL.GLU import *
+from tkinter import *
 
-window = 0                                             # glut window number
-width, height = 500, 400                               # window size
 
-def draw():                                            # ondraw is called all the time
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT) # clear the screen
-    glLoadIdentity()                                   # reset position
-    # ToDo draw rectangle
-    glutSwapBuffers()                                  # important for double buffering
+width, height = 500, 400
+ox = -0.8
+oy = -0.8
+vx = 0.8
+vy = 0.8
 
-# initialization
-glutInit()                                             # initialize glut
-glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_ALPHA | GLUT_DEPTH)
-glutInitWindowSize(width, height)                      # set window size
-glutInitWindowPosition(0, 0)                           # set window position
-window = glutCreateWindow("Projectile Simulator")              # create window with title
-glutDisplayFunc(draw)                                  # set draw function callback
-glutIdleFunc(draw)                                     # draw all the time
-glutMainLoop()                                         # start everything
+def draw_axes():
+    glVertex2f(ox,oy)
+    glVertex2f(vx,oy)                                   # bottom left point
+    glVertex2f(ox,oy)
+    glVertex2f(ox,vy)
+
+def draw():
+    glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT)
+    glBegin(GL_LINES)
+    glColor(1.0, 1.0, 0.0)
+
+    draw_axes()
+
+    glEnd()
+    glutSwapBuffers()
+
+def main():
+    glutInit()
+    glutInitDisplayMode(GLUT_RGBA|GLUT_DOUBLE|GLUT_ALPHA|GLUT_DEPTH)
+    glutInitWindowSize(width, height)
+    glutInitWindowPosition(0,0)
+    glutCreateWindow("Projectile Simulator")
+    glClearColor(1.0, 0.0, 0.0, 1.0)
+    glutDisplayFunc(draw)
+    glutMainLoop()
+
+main()
