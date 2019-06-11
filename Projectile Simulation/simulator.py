@@ -3,9 +3,9 @@ from OpenGL.GLUT import *
 from OpenGL.GLU import *
 from tkinter import *
 from math import sin, cos, radians, pi
+import sys
 
-
-width, height = 500, 400
+width, height = 1000, 1000
 ox = -0.8
 oy = -0.8
 vx = 0.8
@@ -16,7 +16,6 @@ arr_x = []
 arr_y = []
 
 def draw_axes():
-    glVertex2f(ox,oy)
     glVertex2f(vx,oy)
     glVertex2f(ox,oy)
     glVertex2f(ox,vy)
@@ -27,7 +26,7 @@ def draw_trajectory():
     theta = float(input("Enter the initial angle at which the projectile is thrown from the ground: "))
     theta = radians(theta)
     #Time of Flight
-    T = 2*u*sin(theta)//g
+    T = 2*u*sin(theta)/g
 
     while t <= T:
         x = u * cos(theta) * t
@@ -39,9 +38,12 @@ def draw_trajectory():
         arr_y.append(y+oy)
 
         t += clock
-
+def keyboard(key, x, y):
+    if key == chr(27):
+        sys.exit(0)
 
 def draw():
+    glLineWidth(5.0)
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT)
     glBegin(GL_LINES)
     glColor(0.0, 1.0, 1.0)
@@ -60,6 +62,7 @@ def main():
     glutCreateWindow("Projectile Simulator")
     glClearColor(0.0, 0.0, 0.0, 1.0)
     glutDisplayFunc(draw)
+    glutKeyboardFunc(keyboard)
     glutMainLoop()
 
 main()
