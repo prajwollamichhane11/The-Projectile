@@ -15,16 +15,19 @@ g = 9.8
 arr_x = []
 arr_y = []
 
+
 def draw_axes():
     glVertex2f(vx,oy)
     glVertex2f(ox,oy)
     glVertex2f(ox,vy)
+
 
 def draw_trajectory():
     t = 0
     u = int(input("Enter the initial velocity: "))
     theta = float(input("Enter the initial angle at which the projectile is thrown from the ground: "))
     theta = radians(theta)
+
     #Time of Flight
     T = 2*u*sin(theta)/g
 
@@ -34,10 +37,8 @@ def draw_trajectory():
         print(x/100)
         print(y/100)
         glVertex2f(ox+(x/100),oy+(y/100))
-        arr_x.append(x+ox)
-        arr_y.append(y+oy)
-
         t += clock
+
 def keyboard(key, x, y):
     if key == chr(27):
         sys.exit(0)
