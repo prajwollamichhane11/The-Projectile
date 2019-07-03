@@ -9,6 +9,10 @@ turtle.position()
 turtle.hideturtle()
 
 
+turtle.setpos(0,0)
+turtle.forward(1250)
+turtle.hideturtle()
+
 point1 = (50, 100)
 point2 = (150, 200)
 

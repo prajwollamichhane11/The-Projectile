@@ -21,6 +21,18 @@ print("Range of First Projectile = " + str(range))
 maxheight = (V**2 * ((math.sin(math.radians(aci)))**2))/(2*9.8)
 print("Max Height of First Projectile = " + str(maxheight))
 
+turtle.setpos(0,0)
+turtle.left(0)
+turtle.pendown()
+turtle.forward(1250)
+turtle.penup()
+
+turtle.setpos(0,0)
+turtle.left(90)
+turtle.pendown()
+turtle.forward(600)
+turtle.penup()
+
 while Xo<1250:                      # X will be lower than window size.
     Tucus = (2 * Vy) / g                # Calculation of time of flying.
     t = 0                               # Resetting time value.
@@ -28,9 +40,10 @@ while Xo<1250:                      # X will be lower than window size.
         x = Xo + Vx*t                       # Calculation of "x" which is going to be used below to move turtle. ( circle ) 
         y = (Vy*t) - ((g*t**2)/2)           # Calculation of "y" which is going to be used below to move turtle. ( circle ) 
 
-        turtle.pendown()
+        turtle.penup()
         turtle.shape("circle")              # Giving "circle" shape to the turtle object.
         turtle.shapesize(1)                 # Setting object size.
+        turtle.pendown()
         turtle.goto(x,y)                    # Moving object.
 
         t=t+0.5                             # Increasing time (t) value.
@@ -39,6 +52,8 @@ while Xo<1250:                      # X will be lower than window size.
     Xo = Xo + Tucus*Vx                  # Setting new X.
     Vy = Vy*0.8                         # Setting new Y.
 
-
+# turtle.setpos(0,0)
+# turtle.forward(1250)
+# turtle.hideturtle()
 
 turtle.done()                       # Closing window.
