@@ -1,5 +1,5 @@
 import turtle                                           # Import turtle library to use windows and graphical interface.
-import math                                             # Import math to make some calculations below.
+import math
 
 PI = 3.14159265                                         # Setting PI as variable.
 V = int(input("Enter the Initial Velocity: "))                                                  # Setting first speed.
@@ -15,6 +15,12 @@ Yo = 0                                          # Settin first Y.
 turtle.setup(width=1250,height=600)             # Set sizes of window.
 turtle.setworldcoordinates(0, 0, 1250, 600)     # Set coordinatese where will object start from.
 
+range = (V**2*math.sin(2*(math.radians(aci))))/9.8
+print("Range of First Projectile = " + str(range))
+
+maxheight = (V**2 * ((math.sin(math.radians(aci)))**2))/(2*9.8)
+print("Max Height of First Projectile = " + str(maxheight))
+
 while Xo<1250:                      # X will be lower than window size.
     Tucus = (2 * Vy) / g                # Calculation of time of flying.
     t = 0                               # Resetting time value.
@@ -28,19 +34,11 @@ while Xo<1250:                      # X will be lower than window size.
         turtle.goto(x,y)                    # Moving object.
 
         t=t+0.5                             # Increasing time (t) value.
+
+
     Xo = Xo + Tucus*Vx                  # Setting new X.
     Vy = Vy*0.8                         # Setting new Y.
 
-    # point1 = (50, 100)
-    # point2 = (150, 200)
-
-
-    # turtle.penup()
-    # turtle.goto(point1)
-    # turtle.pendown()
-    # turtle.goto(point2)
-
-    # turtle.hideturtle()
 
 
 turtle.done()                       # Closing window.
