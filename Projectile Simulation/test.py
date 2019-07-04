@@ -1,4 +1,5 @@
 import turtle
+from turtle import *
 import math
 
 PI = 3.14159265
@@ -17,6 +18,9 @@ Vy = V*math.sin(math.radians(aci))
 # Point of Intersection of the axes
 Xo = 0
 Yo = 0
+
+# Counting the maximum height for first projectile
+count = 0
 
 # Setting the Window Sizes
 turtle.setup(width=1250,height=600)
@@ -47,36 +51,49 @@ turtle.left(90)
 turtle.pendown()
 turtle.forward(600)
 turtle.penup()
+turtle.goto(0,0)
+turtle.penup()
 
 
 
-while Xo<1250:                      # X will be lower than window size.
-    Tucus = (2 * Vy) / g                # Calculation of time of flying.
-    t = 0                               # Resetting time value.
-    while t<=Tucus:                     # Time shoul be lower than total time of flying.
-        x = Xo + Vx*t                       # Calculation of "x" which is going to be used below to move turtle. ( circle ) 
-        y = (Vy*t) - ((g*t**2)/2)           # Calculation of "y" which is going to be used below to move turtle. ( circle ) 
+while Xo<1250:
+    # Calculation of Time of Flight
+    Tucus = (2 * Vy) / g
+    t = 0
+    while t<=Tucus:
+        # Calculation of "x" to move turtle. ( circle )
+        x = Xo + Vx*t 
+        # Calculation of "y" to move turtle. ( circle ) 
+        y = (Vy*t) - ((g*t**2)/2)
 
-        turtle.shape("circle")              # Giving "circle" shape to the turtle object.
-        turtle.shapesize(1)                 # Setting object size.
+        # Gives shape of circle to turtle
+        color('red')
+        turtle.shape("circle")
+        turtle.shapesize(1)
         turtle.pendown()
-        turtle.goto(x,y)                    # Moving object.
+        turtle.goto(x,y)
+        color('green')
+        # Determines the Speed of movement of the turtle
+        t=t+0.5
 
-        t=t+0.5                             # Increasing time (t) value.
-
-        if int(y) == int(maxheight):
+        if int(y) == int(maxheight) and count == 0:
             xMaxheight = x
             print(xMaxheight)
+
             # Drawing Line from Maximun Height
             turtle.setpos(xMaxheight,maxheight)
             turtle.left(180)
             turtle.pendown()
-            turtle.forward(maxheight)
+            turtle.goto(xMaxheight,0)
             turtle.penup()
-    
+            turtle.goto(xMaxheight,maxheight)
+            turtle.penup()
+            count += 1
 
-    Xo = Xo + Tucus*Vx                  # Setting new X.
-    Vy = Vy*0.8                         # Setting new Y.
+    # Setting new X
+    Xo = Xo + Tucus*Vx
+    # Setting new Y
+    Vy = Vy*0.8
 
 # turtle.setpos(0,0)
 # turtle.forward(1250)
