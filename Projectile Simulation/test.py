@@ -1,6 +1,9 @@
 import turtle
 from turtle import *
 import math
+import pygame
+from time import time
+
 
 PI = 3.14159265
 g = 9.8
@@ -41,30 +44,38 @@ maxheight = (V**2 * ((math.sin(math.radians(aci)))**2))/(2*9.8)
 print("Max Height of First Projectile = " + str(maxheight))
 
 
+#Background Music during the Projectile Motion
+pygame.mixer.init()
+pygame.mixer.music.load("onair.mp3")
+pygame.mixer.music.play()
+
+
 #Drawing the Axes
 # X-axis
 turtle.setpos(0,0)
+turtle.shapesize(2)
 turtle.left(0)
-turtle.shapesize(3)
 turtle.pendown()
 turtle.forward(1250)
 turtle.penup()
+turtle.left(180)
 
 # Y-axis
 turtle.setpos(0,0)
-turtle.left(90)
+turtle.right(90)
 turtle.pendown()
 turtle.forward(600)
 turtle.penup()
+turtle.left(180)
 turtle.goto(0,0)
 turtle.penup()
-
 
 
 while Xo<1250:
     # Calculation of Time of Flight
     Tucus = (2 * Vy) / g
     t = 0
+    start = time()
     while t<=Tucus:
         # Calculation of "x" to move turtle. ( circle )
         x = Xo + Vx*t 
@@ -95,6 +106,19 @@ while Xo<1250:
             turtle.penup()
             count += 1
 
+
+        # Dropping Sound Effect
+        if y == 0 and x != 0:
+            if timeDiff > 0.20:
+                pygame.mixer.init()
+                pygame.mixer.music.load("drop.wav")
+                pygame.mixer.music.play()
+                pygame.time.wait(100)
+
+            
+    end = time()
+    timeDiff = end - start
+
     # Setting new X
     Xo = Xo + Tucus*Vx
     # Setting new Y
@@ -104,4 +128,6 @@ while Xo<1250:
 # turtle.forward(1250)
 # turtle.hideturtle()
 
-turtle.done()                       # Closing window.
+
+# Closing the Window
+turtle.done()
