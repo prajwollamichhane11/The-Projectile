@@ -13,6 +13,10 @@ Vx = V*math.cos(math.radians(aci))
 # Component of Initial Velocity on Y-axis
 Vy = V*math.sin(math.radians(aci))
 
+# Creating Background for Project
+wn = turtle.Screen()
+wn.bgcolor("blue")
+wn.title("Horizontal Projectile Simulation")
 
 # Initial point of the projectile
 # Point of Intersection of the axes
@@ -41,6 +45,7 @@ print("Max Height of First Projectile = " + str(maxheight))
 # X-axis
 turtle.setpos(0,0)
 turtle.left(0)
+turtle.shapesize(3)
 turtle.pendown()
 turtle.forward(1250)
 turtle.penup()
