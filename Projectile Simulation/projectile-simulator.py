@@ -95,7 +95,6 @@ while Xo<1250:
 
         if int(y) == int(maxheight) and count == 0:
             xMaxheight = x
-            print(xMaxheight)
 
             # Drawing Line from Maximun Height
             turtle.setpos(xMaxheight,maxheight)
