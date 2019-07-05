@@ -3,6 +3,7 @@ from turtle import *
 import math
 import pygame
 from time import time
+from tkinter import *
 
 
 PI = 3.14159265
@@ -36,8 +37,8 @@ turtle.setup(width=1250,height=600)
 turtle.setworldcoordinates(0, 0, 1250, 600)
 
 # Finding the range for the first Projectile
-range = (V**2*math.sin(2*(math.radians(aci))))/9.8
-print("Range of First Projectile = " + str(range))
+horrange = (V**2*math.sin(2*(math.radians(aci))))/9.8
+print("Range of First Projectile = " + str(horrange))
 
 # Finding the maximum height height of the first projectile
 maxheight = (V**2 * ((math.sin(math.radians(aci)))**2))/(2*9.8)
@@ -124,10 +125,30 @@ while Xo<1250:
     # Setting new Y
     Vy = Vy*0.8
 
+    if timeDiff < 0.1:
+        break
+
 # turtle.setpos(0,0)
 # turtle.forward(1250)
 # turtle.hideturtle()
 
+top = Tk()
+top.title("Velocity/ACI")
+top.geometry("500x200+500+700")
+
+
+label1 =Label(top, text ="Horizontal Range for first Projectile   :")
+label1.grid(row =0, column =0)
+answer_label =Label(top, text ="---")
+answer_label.grid(row =0, column =10)
+answer_label.configure(text =horrange)
+
+
+label2 =Label(top, text ="Maximum Height of first Projectile      :")
+label2.grid(row =3, column =0)
+answer1_label =Label(top, text ="---")
+answer1_label.grid(row =3, column =10)
+answer1_label.configure(text =maxheight)
 
 # Closing the Window
 turtle.done()
