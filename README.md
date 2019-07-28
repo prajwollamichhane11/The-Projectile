@@ -1,4 +1,5 @@
-<strong>The Projectile Path Simulation</strong>
+<strong>The Projectile Path Simulation</strong><br>
+<a href="https://www.youtube.com/watch?v=ApKsGHLGDCM">CLICK HERE for Demonstration</a>
 <p style="text-align: justify;"><strong>Introduction:</strong><br />
 <p align="justify">Projectile motion is a form of motion experienced by an object or particle I.e a projectile that is thrown near the Earth's Surface and moves along a curved path under the influence of gravity. The curved path was shown by Galileo to be a parabola. The study of such motion is called ballistics and such a trajectory is called ballistic trajectory. The gravity is the major force that influence the object downward thus making the object to accelerate downward. Due to the object's inertia there is no need of horizontal force to maintain the horizontal velocity. But, many other external forces like air resistance, friction, aerodynamic drag etc does affect and while also taking in account such forces further complicated analysis has to be done. Newton's law states that force is required to keep object in motion. But, in fact force is not required to object in motion. Force is only required to keep the object in acceleration. In the case of the projectile which is moving upward, there is a downward force and a downward acceleration. This means the object is moving upward due to initial velocity and is slowing down at the same time. This is how a projectile motion occurs.</p>
 
@@ -22,4 +23,5 @@
 <br><br>
 <strong>The Ballistic Path</strong>
   <img src="https://cdn1.byjus.com/wp-content/uploads/2018/11/jee/2016/02/19053318/21.png"></img>
+
 
